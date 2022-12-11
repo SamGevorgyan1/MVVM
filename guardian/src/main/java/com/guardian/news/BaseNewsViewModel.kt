@@ -9,14 +9,14 @@ import com.guardian.model.news.NewsResultDto
 import com.guardian.news.repository.NewsRepository
 
 
-abstract class BaseNewsViewModel(private val repository: NewsRepository) : ViewModel() {
+abstract class BaseNewsViewModel(private val repositorynews: NewsRepository) : ViewModel() {
 
     private val _resultsLiveData: MutableLiveData<List<NewsResultDto>?> = MutableLiveData()
     val resultsLiveData: LiveData<List<NewsResultDto>?>
         get() = _resultsLiveData
 
     fun getNews() {
-        repository.getNews(
+        repositorynews.getNews(
             object : ResultCallback<GuardianNewsDto?> {
                 override fun onSuccess(data: GuardianNewsDto?) {
                     _resultsLiveData.value = data?.response?.results

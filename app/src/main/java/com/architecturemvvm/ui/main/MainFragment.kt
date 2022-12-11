@@ -30,12 +30,15 @@ class MainFragment : BaseCommonFragment() {
     }
 
     private fun setupListener() {
-        binding.navigateButton.setOnClickListener {
+
+        binding.seeNewsButton.setOnClickListener {
             NavHostFragment.findNavController(this)
                 .navigate(R.id.action_mainFragment_to_newsFragment)
         }
+
         binding.exitButton.setOnClickListener {
             exitProcess(0)
         }
+
     }
 }

@@ -29,16 +29,15 @@ class NewsFragment : BaseCommonFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        inflater.inflate(R.layout.fragment_news, container, false)
-        binding = FragmentNewsBinding.inflate(inflater)
+        binding = FragmentNewsBinding.inflate(inflater,container,false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         setupViews()
         setupListeners()
+
         viewModel.resultsLiveData.observe(viewLifecycleOwner) {
             newsAdapter.updateData(it)
         }
@@ -49,6 +48,7 @@ class NewsFragment : BaseCommonFragment() {
     }
 
     private fun setupListeners(){
+
         binding.backButton.setOnClickListener {
             NavHostFragment.findNavController(this)
                 .navigate(R.id.action_newsFragment_to_mainFragment)
